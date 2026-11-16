@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="wireGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#wireGrad)"/>
+  <!-- Wire cable bundle -->
+  <rect x="10" y="24" width="22" height="16" rx="4" fill="#1e293b"/>
+  <!-- Exposed copper strands -->
+  <rect x="32" y="27" width="14" height="10" rx="2" fill="#f59e0b"/>
+  <!-- Lightning bolt spark -->
+  <polygon points="46,14 36,32 44,32 38,50 56,26 46,26" fill="#fef08a"/>
+</svg>

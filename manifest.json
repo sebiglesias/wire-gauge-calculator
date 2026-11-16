@@ -1,0 +1,16 @@
+{
+  "name": "12V Wire Size & Voltage Drop Calculator",
+  "short_name": "WireCalc",
+  "description": "Calculate correct AWG wire size, mm² cross-section, and voltage drop for 12V, 24V, and 48V DC camper van, marine, and solar battery systems.",
+  "start_url": "/wire-gauge-calculator/",
+  "display": "standalone",
+  "background_color": "#06130d",
+  "theme_color": "#10b981",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "64x64 128x128 256x256",
+      "type": "image/svg+xml"
+    }
+  ]
+}

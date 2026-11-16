@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12V Wire Size & Voltage Drop Calculator — AWG & mm² for Camper Vans, Boats & Solar</title>
+  <meta name="description" content="Calculate exact AWG wire gauge size, mm² cross-section, and voltage drop for 12V, 24V, and 48V DC battery circuits. ABYC and NEC compliant wire sizing for camper vans, marine, and off-grid solar.">
+  <link rel="canonical" href="https://sebiglesias.com.ar/wire-gauge-calculator/">
+  <meta name="theme-color" content="#10b981">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="12V Wire Size & Voltage Drop Calculator — AWG & mm² for Camper Vans & Solar">
+  <meta property="og:description" content="Calculate correct AWG wire size, mm² equivalent, and voltage drop for 12V/24V/48V camper vans, boats, and solar battery systems.">
+  <meta property="og:url" content="https://sebiglesias.com.ar/wire-gauge-calculator/">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2BNDBQP0W7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2BNDBQP0W7');
+  </script>
+
+  <!-- Google AdSense -->
+  <meta name="google-adsense-account" content="ca-pub-3381238987477190">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3381238987477190" crossorigin="anonymous"></script>
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "12V Wire Size & Voltage Drop Calculator",
+      "url": "https://sebiglesias.com.ar/wire-gauge-calculator/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "description": "Calculate minimum AWG wire size, metric mm² conductor area, and voltage drop for 12V, 24V, and 48V DC battery systems.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What wire size do I need for a 12V 2000W inverter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 2000W 12V pure sine wave inverter draws approximately 167 to 200 Amps under full load (including efficiency losses). For a short 3 to 5 foot run from the battery bank, you need 2/0 AWG or 4/0 AWG pure copper cable with a 250A to 300A ANL or Class-T fuse."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is voltage drop so critical in 12V DC systems compared to 120V AC?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because 12V is a very low voltage, losing just 1.2 Volts represents a 10% drop, which causes 12V compressor refrigerators to cut out on low-voltage error, diesel heaters to fail ignition, and battery chargers to undercharge. In a 120V system, a 1.2V drop is only 1%, which is negligible."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the 3% vs 10% voltage drop rule in ABYC standards?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The American Boat and Yacht Council (ABYC) E-11 standard dictates a maximum 3% voltage drop for critical circuits (inverters, solar charge controllers, battery banks, navigation lights, and bilge pumps). Non-critical circuits like cabin LED interior lighting or general 12V accessory outlets are permitted up to a 10% voltage drop."
+          }
+        }
+      ]
+    }
+  ]
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">⚡ ABYC & NEC Electrical Standards</div>
+      <h1>12V Wire Size & Voltage Drop Calculator</h1>
+      <p class="subtitle">Calculate minimum safe AWG wire gauge, metric mm² equivalent, and round-trip voltage drop for 12V, 24V, and 48V DC camper van, boat, and solar battery systems.</p>
+
+      <div class="presets-bar">
+        <button class="preset-btn active" data-preset="fridge">12V 12V Compressor Fridge</button>
+        <button class="preset-btn" data-preset="inverter_2000w">2000W Inverter to Battery</button>
+        <button class="preset-btn" data-preset="diesel_heater">12V Diesel Heater</button>
+        <button class="preset-btn" data-preset="mppt_solar">40A MPPT Solar to Battery</button>
+        <button class="preset-btn" data-preset="led_lights">Cabin LED Lighting</button>
+      </div>
+    </header>
+
+    <!-- Top AdSense Banner -->
+    <div style="text-align:center; margin: 16px 0;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-3381238987477190"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="calc-grid">
+      <!-- Circuit Inputs Card -->
+      <div class="card">
+        <h2>🔌 Circuit Parameters</h2>
+
+        <div class="form-group">
+          <label for="sysVoltage">System Nominal Voltage</label>
+          <select id="sysVoltage">
+            <option value="12" selected>12 Volts DC (Camper / RV / Boat)</option>
+            <option value="24">24 Volts DC (Truck / Off-Grid Solar)</option>
+            <option value="48">48 Volts DC (Home Battery Bank / Solar)</option>
+            <option value="120">120 Volts AC (Standard Household)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="sysCurrent">
+            Continuous Current Load
+            <span class="hint">Amps (Watts ÷ Volts = Amps)</span>
+          </label>
+          <div class="input-wrap">
+            <input type="number" id="sysCurrent" value="5" min="0.1" max="500" step="0.5">
+            <span class="input-suffix">Amps</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="sysDistance">
+            One-Way Wire Distance
+            <span class="hint">Circuit round-trip is automatically doubled</span>
+          </label>
+          <div style="display:flex; gap:8px;">
+            <div class="input-wrap" style="flex:1;">
+              <input type="number" id="sysDistance" value="15" min="1" max="300" step="1">
+            </div>
+            <select id="distUnit" style="width: 100px;">
+              <option value="ft" selected>Feet</option>
+              <option value="m">Meters</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="maxDropPct">
+            Maximum Acceptable Voltage Drop
+            <span class="hint">ABYC E-11 marine & RV guidelines</span>
+          </label>
+          <select id="maxDropPct">
+            <option value="3" selected>3% Drop (Critical: Inverters, Solar, Fridges, Pumps)</option>
+            <option value="10">10% Drop (Non-Critical: Cabin LED Lighting, Outlets)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Results Card -->
+      <div class="card">
+        <h2>📏 Recommended Wire Gauge</h2>
+
+        <div class="result-hero">
+          <div class="result-label">Minimum Recommended Wire Size</div>
+          <div class="result-number" id="wireSizeResult">10 AWG</div>
+          <div class="metric-mm" id="metricMmResult">5.26 mm² (Cross-Section)</div>
+          <div id="statusPill" class="status-pill status-ok">✅ Within Safe 3% Target</div>
+        </div>
+
+        <div class="result-stat-grid">
+          <div class="stat-item">
+            <div class="stat-desc">Voltage Drop</div>
+            <div class="stat-val" id="vDropResult">0.15 V (1.3%)</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-desc">Delivered Voltage at Load</div>
+            <div class="stat-val" style="color:#a7f3d0;" id="vLoadResult">11.85 V</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-desc">Power Lost as Cable Heat</div>
+            <div class="stat-val" id="powerLossResult">0.8 Watts</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-desc">Suggested Fuse / Breaker</div>
+            <div class="stat-val" style="color:#fbbf24;" id="fuseResult">10 Amp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Amazon Electrical Supplies Card (tag sebiglesias-20) -->
+    <div class="supplies-card">
+      <h3>⚡ Recommended Marine & Solar Wiring Insumos</h3>
+      <div class="supplies-grid">
+        <div class="supply-item">
+          <div>
+            <div class="supply-title">Marine Tinned Copper Wire (OFC)</div>
+            <div class="supply-desc">UL 1426 tinned copper wire resists marine corrosion and acid degradation.</div>
+          </div>
+          <a href="https://www.amazon.com/s?k=marine+tinned+copper+wire+duplex&tag=sebiglesias-20" target="_blank" rel="nofollow noopener" class="btn-amazon">Find Wire on Amazon →</a>
+        </div>
+        <div class="supply-item">
+          <div>
+            <div class="supply-title">Hydraulic Wire Crimper (12T)</div>
+            <div class="supply-desc">Heavy duty lug crimper for 12 AWG up to 2/0 and 4/0 battery cables.</div>
+          </div>
+          <a href="https://www.amazon.com/s?k=hydraulic+wire+crimper+tool+battery+cable&tag=sebiglesias-20" target="_blank" rel="nofollow noopener" class="btn-amazon">View on Amazon →</a>
+        </div>
+        <div class="supply-item">
+          <div>
+            <div class="supply-title">Adhesive Dual-Wall Heat Shrink</div>
+            <div class="supply-desc">3:1 marine grade glue-lined heat shrink tubing creates waterproof seals.</div>
+          </div>
+          <a href="https://www.amazon.com/s?k=marine+grade+heat+shrink+tubing+3+1&tag=sebiglesias-20" target="_blank" rel="nofollow noopener" class="btn-amazon">View on Amazon →</a>
+        </div>
+        <div class="supply-item">
+          <div>
+            <div class="supply-title">ANL Fuse Block & Heavy Terminal Lugs</div>
+            <div class="supply-desc">High amp battery circuit protection with transparent safety cover.</div>
+          </div>
+          <a href="https://www.amazon.com/s?k=anl+fuse+block+holder+12v&tag=sebiglesias-20" target="_blank" rel="nofollow noopener" class="btn-amazon">View on Amazon →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Educational Guide Section -->
+    <section class="guide-section">
+      <h2>How DC Wire Sizing and Voltage Drop Work</h2>
+      <p>In low-voltage DC electrical systems (especially 12V and 24V camper vans, motorhomes, overland rigs, and sailboats), selecting the correct wire gauge is far more demanding than in residential 120V household AC wiring. Two independent engineering rules must be satisfied:</p>
+      
+      <p><strong>1. Ampacity Limit (Thermal Safety):</strong> The wire conductor must be physically thick enough to carry the current without heating up to temperatures that melt insulation, damage surrounding components, or trigger electrical fires. The National Electrical Code (NEC) and American Boat and Yacht Council (ABYC) publish strict ampacity charts based on 105°C insulation ratings.</p>
+      
+      <p><strong>2. Voltage Drop Limit (Performance & Reliability):</strong> Every copper conductor has natural electrical resistance. Because direct current flows in a complete loop, the total circuit length is always <em>round-trip</em> (from the positive battery terminal, through the appliance, and back along the negative return conductor). In a 12V system, losing just 0.6V to 1.2V causes 12V Danfoss/Secop compressor fridges to shut off on low-voltage error, diesel heaters to fail startup glow-plug cycles, and MPPT solar chargers to lose tracking efficiency.</p>
+      
+      <p><strong>3. Why Marine Tinned Copper is Superior:</strong> Standard automotive automotive primary wire uses bare copper strands. Over time in humid or marine environments, copper oxidizes into green copper oxide, which dramatically increases joint resistance and causes connection failures. Marine-grade (UL 1426) wire is individually electroplated with tin, eliminating oxidation and maintaining low resistance for decades.</p>
+    </section>
+
+    <!-- FAQ Section for SEO -->
+    <section class="faq-section">
+      <h2 style="font-size:1.4rem; color:#ffffff; margin-bottom:16px;">Frequently Asked Questions (FAQ)</h2>
+      <div class="faq-item">
+        <div class="faq-q">What is the formula used to calculate DC voltage drop?</div>
+        <div class="faq-a">Voltage drop is calculated using Ohm's Law: V = I × R, where I is current in Amperes and R is total circuit resistance. For a round-trip DC circuit, R = (2 × One-Way Distance in feet × Resistance per 1,000 feet) ÷ 1,000. Dividing the resulting voltage drop by the supply voltage gives the percentage drop.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What size wire do I need for a 12V 40A MPPT solar charge controller?</div>
+        <div class="faq-a">For a 40 Amp solar charge controller placed within 6 to 8 feet of the lithium battery bank, 6 AWG marine tinned copper wire is required to keep voltage drop well below 2%, ensuring full charging voltage reaches the battery terminals.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What is the difference between AWG and mm² wire sizing?</div>
+        <div class="faq-a">American Wire Gauge (AWG) is an inverse logarithmic scale used primarily in North America (smaller numbers represent thicker wires, e.g., 4 AWG is much thicker than 14 AWG). In Europe and the rest of the world, conductors are measured directly by their cross-sectional metric area in square millimeters (mm²), where larger numbers represent thicker wire (e.g., 21.2 mm² equals 4 AWG).</div>
+      </div>
+    </section>
+
+    <!-- Bottom AdSense Banner -->
+    <div style="text-align:center; margin: 32px 0;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-3381238987477190"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <footer>
+      <p>© 2026 <a href="https://sebiglesias.com.ar/">sebiglesias.com.ar</a> · 12V DC Wire Gauge & Voltage Drop Calculator.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
